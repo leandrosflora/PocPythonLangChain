@@ -1,0 +1,92 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\1513 X-MXTI\\source\\repos\\PocPythonLangChain\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\server.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DD87C72-9291-4939-A415-031C59A38FD7}|..\\WebApiCliente\\WebApiCliente.csproj|c:\\users\\1513 x-mxti\\source\\repos\\webapicliente\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DD87C72-9291-4939-A415-031C59A38FD7}|..\\WebApiCliente\\WebApiCliente.csproj|c:\\users\\1513 x-mxti\\source\\repos\\webapicliente\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClienteController.cs",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\WebApiCliente\\Controllers\\ClienteController.cs",
+              "RelativeDocumentMoniker": "..\\WebApiCliente\\Controllers\\ClienteController.cs",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\WebApiCliente\\Controllers\\ClienteController.cs",
+              "RelativeToolTip": "..\\WebApiCliente\\Controllers\\ClienteController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAACCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-05T21:59:17.535Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\WebApiCliente\\Program.cs",
+              "RelativeDocumentMoniker": "..\\WebApiCliente\\Program.cs",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\WebApiCliente\\Program.cs",
+              "RelativeToolTip": "..\\WebApiCliente\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-05T21:56:16.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "server.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\server.py",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\server.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\server.py",
+              "RelativeToolTip": "..\\McpServerPython\\server.py",
+              "ViewState": "AgIAAEsAAAAAAAAAAAAAAFcAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-04-05T21:53:37.35Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

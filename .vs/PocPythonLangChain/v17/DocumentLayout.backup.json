@@ -1,0 +1,351 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\1513 X-MXTI\\source\\repos\\PocPythonLangChain\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\server.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\run_server.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD8BD97-1120-4B0C-8189-279235835C51}|PocPythonLangChain.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\PocPythonLangChain\\agent.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{0DD8BD97-1120-4B0C-8189-279235835C51}|PocPythonLangChain.pyproj|solutionrelative:agent.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD8BD97-1120-4B0C-8189-279235835C51}|PocPythonLangChain.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\PocPythonLangChain\\agent_api.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{0DD8BD97-1120-4B0C-8189-279235835C51}|PocPythonLangChain.pyproj|solutionrelative:agent_api.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0DD8BD97-1120-4B0C-8189-279235835C51}|PocPythonLangChain.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\PocPythonLangChain\\run_agent.py||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{0DD8BD97-1120-4B0C-8189-279235835C51}|PocPythonLangChain.pyproj|solutionrelative:run_agent.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\requirements.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DD87C72-9291-4939-A415-031C59A38FD7}|..\\WebApiCliente\\WebApiCliente.csproj|c:\\users\\1513 x-mxti\\source\\repos\\webapicliente\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DD87C72-9291-4939-A415-031C59A38FD7}|..\\WebApiCliente\\WebApiCliente.csproj|c:\\users\\1513 x-mxti\\source\\repos\\webapicliente\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DD87C72-9291-4939-A415-031C59A38FD7}|..\\WebApiCliente\\WebApiCliente.csproj|c:\\users\\1513 x-mxti\\source\\repos\\webapicliente\\webapicliente.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\policies\\idempotency.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\policies\\auth.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\__init__.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\eligibility.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\contracts.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\customers.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\offers.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\runtime.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\models.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\http_clients.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{488DFD25-9F2B-47CE-8241-7E847D4FF564}|..\\McpServerPython\\McpServerPython.pyproj|C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\errors.py||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 20,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "requirements.txt",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\requirements.txt",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\requirements.txt",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\requirements.txt",
+              "RelativeToolTip": "..\\McpServerPython\\requirements.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2026-04-05T21:37:50.204Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ClienteController.cs",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\WebApiCliente\\Controllers\\ClienteController.cs",
+              "RelativeDocumentMoniker": "..\\WebApiCliente\\Controllers\\ClienteController.cs",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\WebApiCliente\\Controllers\\ClienteController.cs",
+              "RelativeToolTip": "..\\WebApiCliente\\Controllers\\ClienteController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-05T21:37:44.698Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\WebApiCliente\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "..\\WebApiCliente\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\WebApiCliente\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "..\\WebApiCliente\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-05T21:37:42.834Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "WebApiCliente.csproj",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\WebApiCliente\\WebApiCliente.csproj",
+              "RelativeDocumentMoniker": "..\\WebApiCliente\\WebApiCliente.csproj",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\WebApiCliente\\WebApiCliente.csproj",
+              "RelativeToolTip": "..\\WebApiCliente\\WebApiCliente.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-05T21:37:39.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "run_agent.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\PocPythonLangChain\\run_agent.py",
+              "RelativeDocumentMoniker": "run_agent.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\PocPythonLangChain\\run_agent.py",
+              "RelativeToolTip": "run_agent.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-04-05T21:35:37.868Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "agent_api.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\PocPythonLangChain\\agent_api.py",
+              "RelativeDocumentMoniker": "agent_api.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\PocPythonLangChain\\agent_api.py",
+              "RelativeToolTip": "agent_api.py",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-04-05T21:35:36.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "run_server.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\run_server.py",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\run_server.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\run_server.py",
+              "RelativeToolTip": "..\\McpServerPython\\run_server.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-04-05T21:33:50.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "__init__.py (tools)",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\__init__.py",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\mcp\\tools\\__init__.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\__init__.py",
+              "RelativeToolTip": "..\\McpServerPython\\mcp\\tools\\__init__.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-18T19:41:43.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "agent.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\PocPythonLangChain\\agent.py",
+              "RelativeDocumentMoniker": "agent.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\PocPythonLangChain\\agent.py",
+              "RelativeToolTip": "agent.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAMYAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-18T19:41:20.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "contracts.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\contracts.py",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\mcp\\tools\\contracts.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\contracts.py",
+              "RelativeToolTip": "..\\McpServerPython\\mcp\\tools\\contracts.py",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAkwGoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-18T19:07:01.137Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "customers.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\customers.py",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\mcp\\tools\\customers.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\customers.py",
+              "RelativeToolTip": "..\\McpServerPython\\mcp\\tools\\customers.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-18T19:06:39.648Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "offers.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\offers.py",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\mcp\\tools\\offers.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\offers.py",
+              "RelativeToolTip": "..\\McpServerPython\\mcp\\tools\\offers.py",
+              "ViewState": "AgIAACgAAAAAAAAAAAAkwCoAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-18T19:06:30.633Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "runtime.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\runtime.py",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\mcp\\runtime.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\runtime.py",
+              "RelativeToolTip": "..\\McpServerPython\\mcp\\runtime.py",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAkwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-18T19:06:10.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "models.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\models.py",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\mcp\\models.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\models.py",
+              "RelativeToolTip": "..\\McpServerPython\\mcp\\models.py",
+              "ViewState": "AgIAACQAAAAAAAAAAAAkwEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-18T19:05:21.543Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "server.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\server.py",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\server.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\server.py",
+              "RelativeToolTip": "..\\McpServerPython\\server.py",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAkwIAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-18T18:49:52.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "eligibility.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\eligibility.py",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\mcp\\tools\\eligibility.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\tools\\eligibility.py",
+              "RelativeToolTip": "..\\McpServerPython\\mcp\\tools\\eligibility.py",
+              "ViewState": "AgIAADUAAAAAAAAAAAAkwFIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-18T19:07:19.173Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "http_clients.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\http_clients.py",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\mcp\\http_clients.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\http_clients.py",
+              "RelativeToolTip": "..\\McpServerPython\\mcp\\http_clients.py",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAkwEoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-18T19:05:02.631Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "errors.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\errors.py",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\mcp\\errors.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\errors.py",
+              "RelativeToolTip": "..\\McpServerPython\\mcp\\errors.py",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAkwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-18T19:04:42.916Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "idempotency.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\policies\\idempotency.py",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\mcp\\policies\\idempotency.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\policies\\idempotency.py",
+              "RelativeToolTip": "..\\McpServerPython\\mcp\\policies\\idempotency.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-18T19:04:21.386Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "auth.py",
+              "DocumentMoniker": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\policies\\auth.py",
+              "RelativeDocumentMoniker": "..\\McpServerPython\\mcp\\policies\\auth.py",
+              "ToolTip": "C:\\Users\\1513 X-MXTI\\source\\repos\\McpServerPython\\mcp\\policies\\auth.py",
+              "RelativeToolTip": "..\\McpServerPython\\mcp\\policies\\auth.py",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002457|",
+              "WhenOpened": "2026-02-18T19:04:02.433Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
