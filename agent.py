@@ -1,13 +1,35 @@
-﻿from __future__ import annotations
+from __future__ import annotations
 
+import logging
 import os
 import re
 import uuid
 from dataclasses import dataclass
 from enum import Enum
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional
 
 import httpx
+
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(level=logging.INFO)
+
+
+# =========================
+# User-facing messages
+# =========================
+MSG_ASK_CPF = "Para sua segurança, me envie seu CPF (somente números)."
+MSG_ASK_AMOUNT = "Qual valor você quer simular? Ex: 5000"
+MSG_INVALID_OFFER = "Escolha inválida. Responda com 1, 2 ou 3."
+MSG_CUSTOMER_NOT_FOUND = "Não encontrei seu cadastro. Confira seu número ou procure atendimento humano."
+MSG_LOOKUP_UNSTABLE = "Serviço instável agora. Tenta de novo em alguns minutos."
+MSG_IDENTITY_UNAVAILABLE = "Não consegui validar sua identidade agora. Tente novamente mais tarde."
+MSG_SIMULATION_UNAVAILABLE = "Não consegui simular agora. Tente novamente em instantes."
+MSG_FORMALIZATION_UNAVAILABLE = "Deu ruim na formalização agora. Tente novamente em instantes."
+MSG_CONTRACT_CREATION_FAILED = "Falhou ao criar o contrato. Tente novamente em instantes."
+MSG_CONTEXT_LOST = "Perdi seu contexto. Me envie seu CPF novamente (somente números)."
+MSG_NOT_ELIGIBLE = "No momento você não está elegível para consignado."
+MSG_NO_OFFERS = "Não encontrei ofertas agora. Tente um valor diferente ou mais tarde."
 
 
 # =========================
@@ -32,13 +54,42 @@ class MCPClient:
 
     def call(self, tool_name: str, tool_input: Dict[str, Any], context: Dict[str, Any]) -> Dict[str, Any]:
         payload = {"tool": tool_name, "input": tool_input, "context": context}
-        resp = httpx.post(f"{self.base_url}/call", json=payload, headers=self.headers, timeout=self.timeout)
-        resp.raise_for_status()
-        data = resp.json()
+
+        try:
+            resp = httpx.post(
+                f"{self.base_url}/call",
+                json=payload,
+                headers=self.headers,
+                timeout=self.timeout,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+        except httpx.TimeoutException as e:
+            raise MCPError(
+                "MCP_TIMEOUT",
+                "Timeout ao chamar MCP",
+                retriable=True,
+                details={"tool": tool_name},
+            ) from e
+        except httpx.HTTPStatusError as e:
+            raise MCPError(
+                "MCP_HTTP_ERROR",
+                f"Erro HTTP ao chamar MCP: {e.response.status_code}",
+                retriable=True,
+                details={"tool": tool_name, "status_code": e.response.status_code},
+            ) from e
+        except Exception as e:
+            raise MCPError(
+                "MCP_UNAVAILABLE",
+                "MCP indisponível ou resposta inválida",
+                retriable=True,
+                details={"tool": tool_name},
+            ) from e
 
         # Harness envelope: {ok, output?, error?, trace}
         if isinstance(data, dict) and data.get("ok") is True:
             return data.get("output") or {}
+
         if isinstance(data, dict) and data.get("ok") is False:
             err = data.get("error") or {}
             raise MCPError(
@@ -49,7 +100,9 @@ class MCPClient:
             )
 
         # fallback (compat)
-        return data.get("output", data)
+        if isinstance(data, dict):
+            return data.get("output", data)
+        return {"raw": data}
 
 
 MCP_BASE_URL = os.getenv("MCP_BASE_URL", "http://localhost:8001")
@@ -79,6 +132,7 @@ class Journey:
     phone: Optional[str] = None
     stage: Stage = Stage.START
 
+    lookup_done: bool = False
     customerRef: Optional[str] = None
     has_identity: bool = False
     cpfToken: Optional[str] = None
@@ -147,6 +201,51 @@ def _is_offer_choice(text: str) -> bool:
     return (text or "").strip() in {"1", "2", "3"}
 
 
+@dataclass(frozen=True)
+class ParsedMessage:
+    text: str
+    cpf: Optional[str]
+    amount: Optional[float]
+    is_offer_choice: bool
+    is_consignado_intent: bool
+
+
+def parse_message(text: str) -> ParsedMessage:
+    cpf = _extract_cpf(text)
+    amount = _extract_amount(text)
+    is_offer_choice = _is_offer_choice(text)
+
+    t = (text or "").lower()
+    keywords = [
+        "consign",
+        "empréstimo",
+        "emprestimo",
+        "crédito",
+        "credito",
+        "parcela",
+        "simular",
+        "simulação",
+        "simulacao",
+        "oferta",
+        "taxa",
+    ]
+
+    is_consignado_intent = (
+        any(k in t for k in keywords)
+        or amount is not None
+        or is_offer_choice
+        or cpf is not None
+    )
+
+    return ParsedMessage(
+        text=text,
+        cpf=cpf,
+        amount=amount,
+        is_offer_choice=is_offer_choice,
+        is_consignado_intent=is_consignado_intent,
+    )
+
+
 def _parse_offer_selection(text: str, offers: List[Dict[str, Any]]) -> Optional[str]:
     t = (text or "").strip()
     if t not in {"1", "2", "3"}:
@@ -156,20 +255,6 @@ def _parse_offer_selection(text: str, offers: List[Dict[str, Any]]) -> Optional[
         return None
     off = offers[idx]
     return off.get("id") or off.get("offerId") or off.get("OfferId")
-
-
-def _is_consignado_intent(text: str) -> bool:
-    t = (text or "").lower()
-    keywords = ["consign", "empréstimo", "emprestimo", "crédito", "credito", "parcela", "simular", "simulação", "simulacao", "oferta", "taxa"]
-    if any(k in t for k in keywords):
-        return True
-    if _extract_amount(text) is not None:
-        return True
-    if _is_offer_choice(text):
-        return True
-    if _extract_cpf(text) is not None:
-        return True
-    return False
 
 
 def _format_offers_for_whatsapp(offers: List[Dict[str, Any]]) -> str:
@@ -192,11 +277,28 @@ def _out_of_scope_reply() -> Dict[str, Any]:
     }
 
 
+def _reply(message: str, stage: Stage) -> Dict[str, Any]:
+    return {"whatsappReply": message, "stage": stage.value}
+
+
+def _log_mcp_error(step: str, err: MCPError, journey: Journey) -> None:
+    logger.warning(
+        "mcp_error step=%s code=%s retriable=%s correlation_id=%s stage=%s details=%s",
+        step,
+        err.code,
+        err.retriable,
+        journey.correlation_id,
+        journey.stage.value,
+        err.details,
+    )
+
+
 # =========================
 # MCP wrappers (workflow steps)
 # =========================
 def _lookup(j: Journey) -> Dict[str, Any]:
     out = mcp.call("lookup_customer_by_phone", {"phone": j.phone}, _ctx(j))
+    j.lookup_done = True
     if out.get("customerRef"):
         j.customerRef = out.get("customerRef")
     return out
@@ -242,6 +344,114 @@ def _get_formalization_link(j: Journey, contract_id: str) -> Dict[str, Any]:
 
 
 # =========================
+# Flow helpers
+# =========================
+def _ensure_customer_lookup(j: Journey) -> Optional[Dict[str, Any]]:
+    if j.lookup_done or j.customerRef:
+        return None
+
+    try:
+        lookup = _lookup(j)
+        if not lookup.get("found"):
+            j.stage = Stage.START
+            return _reply(MSG_CUSTOMER_NOT_FOUND, j.stage)
+        return None
+    except MCPError as err:
+        _log_mcp_error("lookup", err, j)
+        return _reply(MSG_LOOKUP_UNSTABLE, j.stage)
+
+
+def _ensure_identity(j: Journey, parsed: ParsedMessage) -> Optional[Dict[str, Any]]:
+    try:
+        ident = _identity_context(j)
+        if ident.get("hasIdentity"):
+            return None
+
+        if not parsed.cpf:
+            j.stage = Stage.ASK_CPF
+            return _reply(MSG_ASK_CPF, j.stage)
+
+        res = _resolve_cpf(j, parsed.cpf)
+        if not res.get("resolved"):
+            j.stage = Stage.ASK_CPF
+            return _reply("CPF não conferiu. Tente novamente (somente números).", j.stage)
+
+        return None
+    except MCPError as err:
+        _log_mcp_error("identity", err, j)
+        return _reply(MSG_IDENTITY_UNAVAILABLE, j.stage)
+
+
+def _handle_offer_confirmation(j: Journey, parsed: ParsedMessage) -> Dict[str, Any]:
+    offers = j.last_offers or []
+    offer_id = _parse_offer_selection(parsed.text, offers)
+    if not offer_id:
+        return _reply(MSG_INVALID_OFFER, Stage.AWAIT_OFFER_CONFIRMATION)
+
+    try:
+        ident = _identity_context(j)
+        if not ident.get("hasIdentity"):
+            j.stage = Stage.ASK_CPF
+            return _reply(MSG_CONTEXT_LOST, j.stage)
+
+        contract = _create_contract(j, offer_id)
+        contract_id = contract.get("contractId")
+        if not contract_id:
+            return _reply(MSG_CONTRACT_CREATION_FAILED, j.stage)
+
+        link = _get_formalization_link(j, contract_id)
+        url = link.get("formalizationUrl")
+        expires = link.get("expiresAt")
+
+        j.stage = Stage.DONE
+        j.last_offers = None
+        return {
+            "whatsappReply": f"Perfeito. Para continuar a formalização, acesse: {url}\nValidade: {expires}",
+            "contractId": contract_id,
+            "formalizationUrl": url,
+            "expiresAt": expires,
+            "stage": j.stage.value,
+        }
+    except MCPError as err:
+        _log_mcp_error("formalization", err, j)
+        return _reply(MSG_FORMALIZATION_UNAVAILABLE, j.stage)
+
+
+def _handle_simulation_flow(j: Journey, parsed: ParsedMessage) -> Dict[str, Any]:
+    lookup_reply = _ensure_customer_lookup(j)
+    if lookup_reply:
+        return lookup_reply
+
+    identity_reply = _ensure_identity(j, parsed)
+    if identity_reply:
+        return identity_reply
+
+    if parsed.amount is None:
+        j.stage = Stage.ASK_AMOUNT
+        return _reply(MSG_ASK_AMOUNT, j.stage)
+
+    j.last_requested_amount = parsed.amount
+
+    try:
+        elig = _check_eligibility(j)
+        if not elig.get("eligible", True):
+            j.stage = Stage.DONE
+            return _reply(MSG_NOT_ELIGIBLE, j.stage)
+
+        offers = _get_offers(j, parsed.amount)
+        if not offers:
+            j.stage = Stage.DONE
+            return _reply(MSG_NO_OFFERS, j.stage)
+
+        j.stage = Stage.AWAIT_OFFER_CONFIRMATION
+        reply = _format_offers_for_whatsapp(offers)
+        return {"whatsappReply": reply, "offers": offers[:3], "stage": j.stage.value}
+    except MCPError as err:
+        _log_mcp_error("simulation", err, j)
+        return _reply(MSG_SIMULATION_UNAVAILABLE, j.stage)
+
+
+# =========================
 # Main entrypoint
 # =========================
 def handle_whatsapp_message(phone: str, text: str, conversationId: Optional[str] = None) -> Dict[str, Any]:
@@ -249,97 +459,17 @@ def handle_whatsapp_message(phone: str, text: str, conversationId: Optional[str]
     j = get_journey(conversation_id, channel="whatsapp")
     j.phone = phone
 
-    # Gate fora do escopo (não bloqueia CPF / escolha)
-    if j.stage != Stage.AWAIT_OFFER_CONFIRMATION and not _is_consignado_intent(text):
+    parsed = parse_message(text)
+
+    # Gate fora do escopo. Não bloqueia a etapa de escolha de oferta.
+    if j.stage != Stage.AWAIT_OFFER_CONFIRMATION and not parsed.is_consignado_intent:
+        j.stage = Stage.OUT_OF_SCOPE
         return _out_of_scope_reply()
 
-    # 1) Se aguardando confirmação: contrata
     if j.stage == Stage.AWAIT_OFFER_CONFIRMATION and j.last_offers:
-        offer_id = _parse_offer_selection(text, j.last_offers)
-        if not offer_id:
-            return {"whatsappReply": "Escolha inválida. Responda com 1, 2 ou 3.", "stage": Stage.AWAIT_OFFER_CONFIRMATION.value}
+        return _handle_offer_confirmation(j, parsed)
 
-        try:
-            ident = _identity_context(j)
-            if not ident.get("hasIdentity"):
-                j.stage = Stage.ASK_CPF
-                return {"whatsappReply": "Perdi seu contexto. Me envie seu CPF novamente (somente números).", "stage": j.stage.value}
-
-            contract = _create_contract(j, offer_id)
-            contract_id = contract.get("contractId")
-            if not contract_id:
-                return {"whatsappReply": "Falhou ao criar o contrato. Tente novamente em instantes.", "stage": j.stage.value}
-
-            link = _get_formalization_link(j, contract_id)
-            url = link.get("formalizationUrl")
-            expires = link.get("expiresAt")
-
-            j.stage = Stage.DONE
-            j.last_offers = None
-            return {
-                "whatsappReply": f"Perfeito. Para continuar a formalização, acesse: {url}\nValidade: {expires}",
-                "contractId": contract_id,
-                "formalizationUrl": url,
-                "expiresAt": expires,
-                "stage": j.stage.value,
-            }
-
-        except MCPError:
-            # sem detalhes sensíveis pro usuário
-            return {"whatsappReply": "Deu ruim na formalização agora. Tente novamente em instantes.", "stage": j.stage.value}
-
-    # 2) Sempre faz lookup no whatsapp
-    try:
-        lookup = _lookup(j)
-        if not lookup.get("found"):
-            j.stage = Stage.START
-            return {"whatsappReply": "Não encontrei seu cadastro. Confira seu número ou procure atendimento humano.", "stage": j.stage.value}
-
-    except MCPError:
-        return {"whatsappReply": "Serviço instável agora. Tenta de novo em alguns minutos.", "stage": j.stage.value}
-
-    # 3) Identidade: se não tem, pede CPF
-    try:
-        ident = _identity_context(j)
-        if not ident.get("hasIdentity"):
-            cpf = _extract_cpf(text)
-            if not cpf:
-                j.stage = Stage.ASK_CPF
-                return {"whatsappReply": "Para sua segurança, me envie seu CPF (somente números).", "stage": j.stage.value}
-
-            res = _resolve_cpf(j, cpf)
-            if not res.get("resolved"):
-                j.stage = Stage.ASK_CPF
-                return {"whatsappReply": "CPF não conferiu. Tente novamente (somente números).", "stage": j.stage.value}
-
-    except MCPError:
-        return {"whatsappReply": "Não consegui validar sua identidade agora. Tente novamente mais tarde.", "stage": j.stage.value}
-
-    # 4) Valor
-    amount = _extract_amount(text)
-    if amount is None:
-        j.stage = Stage.ASK_AMOUNT
-        return {"whatsappReply": "Qual valor você quer simular? Ex: 5000", "stage": j.stage.value}
-    j.last_requested_amount = amount
-
-    # 5) Elegibilidade + ofertas
-    try:
-        elig = _check_eligibility(j)
-        if not elig.get("eligible", True):
-            j.stage = Stage.DONE
-            return {"whatsappReply": "No momento você não está elegível para consignado.", "stage": j.stage.value}
-
-        offers = _get_offers(j, amount)
-        if not offers:
-            j.stage = Stage.DONE
-            return {"whatsappReply": "Não encontrei ofertas agora. Tente um valor diferente ou mais tarde.", "stage": j.stage.value}
-
-        j.stage = Stage.AWAIT_OFFER_CONFIRMATION
-        reply = _format_offers_for_whatsapp(offers)
-        return {"whatsappReply": reply, "offers": offers[:3], "stage": j.stage.value}
-
-    except MCPError:
-        return {"whatsappReply": "Não consegui simular agora. Tente novamente em instantes.", "stage": j.stage.value}
+    return _handle_simulation_flow(j, parsed)
 
 
 if __name__ == "__main__":
